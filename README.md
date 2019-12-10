@@ -26,6 +26,10 @@ please change application configuration in settings.py:
     SEARCH_URL= 'https://api.twitter.com/1.1/search/tweets.json' #TWITTER SEARCH URL
     USER_TIMELINE_URL= 'https://api.twitter.com/1.1/statuses/user_timeline.json' #TWITTER USER TIMELINE URL
 ----
+Running
+-----------
+    $ python app.py
+----
 Get User timeline
 -----------
 * **URL:**
