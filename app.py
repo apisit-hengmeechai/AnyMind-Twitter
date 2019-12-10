@@ -11,13 +11,10 @@ def get_access_token():
     params = {'grant_type': 'client_credentials'}
     r = requests.post(url=AUTH_URL, params=params, auth=(
         CONSUMER_API_KEY, CONSUMER_API_SECRET_KEY))
-    access_token = r.json().get("access_token")
-    if access_token != None:
-        return access_token
+    if r.status_code != 200:
+        abort(Response(response=json.dumps(r.json()), status=r.status_code, mimetype='application/json'))
     else:
-        response = json.dumps(
-            {'message': 'Can\'t get access_token please try again.'})
-        abort(Response(response=response, status=500, mimetype='application/json'))
+        return r.json().get("access_token")
 
 
 @app.route('/hashtags/<q>')
